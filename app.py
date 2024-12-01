@@ -17,6 +17,11 @@ st.title("Mental Health Companion Chatbot")
 if "messages" not in st.session_state:
     st.session_state.messages = []
 
+# Check if chat history is empty and add initial message from model
+if not st.session_state.messages:
+    initial_message = {"role": "model", "content": "Hey there! How's your day been?"}
+    st.session_state.messages.append(initial_message)
+
 # Display chat history
 for message in st.session_state.messages:
     with st.chat_message(message["role"]):
