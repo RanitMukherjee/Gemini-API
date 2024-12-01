@@ -43,7 +43,6 @@ if prompt := st.chat_input("Talk to me..."):
         for response in model.generate_content(
             prompt,
             stream=True,
-            temperature=0.5,  # Moderate temperature for empathetic responses
         ):
             full_response += response.text
             # Limit response length to prevent excessively long responses.
