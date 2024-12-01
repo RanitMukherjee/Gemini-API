@@ -19,7 +19,7 @@ if "messages" not in st.session_state:
 
 # Check if chat history is empty and add initial message from model
 if not st.session_state.messages:
-    initial_message_content = "Hey there! How's your day been? 😊"
+    initial_message_content = "Hey there! How's your day been? \U0001F60A"
     initial_message = {"role": "assistant", "content": initial_message_content}
     st.session_state.messages.append(initial_message)
 
