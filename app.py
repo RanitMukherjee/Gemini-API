@@ -19,7 +19,7 @@ if "messages" not in st.session_state:
 
 # Check if chat history is empty and add initial message from model
 if not st.session_state.messages:
-    initial_message_content = "Hey there! How's your day been?"
+    initial_message_content = "Hey there! How's your day been? 😊"
     initial_message = {"role": "assistant", "content": initial_message_content}
     st.session_state.messages.append(initial_message)
 
@@ -40,8 +40,7 @@ if prompt := st.chat_input("Talk to me..."):
         full_response = ""
 
         # Priming the model for compassionate responses:
-        compassionate_prompt = f"""You are a compassionate and empathetic AI assistant.  A user has shared the following: '{prompt}'. Please respond in a way that is supportive, understanding, and validates their feelings.  Offer helpful suggestions if appropriate, but prioritize being a good listener and showing genuine care."""
-
+        compassionate_prompt = f"""You are a compassionate and empathetic AI assistant. A user has shared the following: '{prompt}'. Please respond in a way that is supportive, understanding, and validates their feelings. Use emotes to convey emotions. Offer helpful suggestions if appropriate, but prioritize being a good listener and showing genuine care. 😊"""
         for response in model.generate_content(
             compassionate_prompt,  # Using the modified prompt
             stream=True,
