@@ -23,8 +23,8 @@ Mental Health Care Companion is an innovative application designed to support me
 
 1. **Clone the Repository**:
     ```sh
-    git clone https://github.com/your-username/mental-health-companion.git
-    cd mental-health-companion
+    git clone https://github.com/RanitMukherjee/EmotiCare.git
+    cd EmotiCare
     ```
 
 2. **Create and Activate a Virtual Environment**:
