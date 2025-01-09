@@ -2,19 +2,16 @@ import os
 import cv2
 import streamlit as st
 from dotenv import load_dotenv
-import google.generativeai as genai
 import numpy as np
 from tensorflow.keras.models import load_model
 from tensorflow.keras.preprocessing import image
+import ollama  # Import Ollama
 
 # Load environment variables
 load_dotenv()
-api_key = os.getenv("API_KEY")
-genai.configure(api_key=api_key)
-model = genai.GenerativeModel("gemini-1.5-flash")
 
 # Load the trained model
-model_best = load_model('model.h5') # set your machine model file path here
+model_best = load_model('model.h5')  # set your machine model file path here
 
 # Classes 7 emotional states
 class_names = ['Angry', 'Disgusted', 'Fear', 'Happy', 'Sad', 'Surprise', 'Neutral']
@@ -80,7 +77,6 @@ if cap.isOpened():
 else:
     st.error("Failed to open webcam.")
 
-
 # User input and AI response
 if prompt := st.chat_input("Talk to me..."):
     st.session_state.messages.append({"role": "user", "content": prompt})
@@ -93,15 +89,13 @@ if prompt := st.chat_input("Talk to me..."):
 
         compassionate_prompt = f"""You are a compassionate and empathetic AI assistant. A user has shared the following: '{prompt}'. Please respond in a way that is supportive, understanding, and validates their feelings. Use emotes to convey emotions. Offer helpful suggestions if appropriate, but prioritize being a good listener and showing genuine care. 😊"""
 
-        for response in model.generate_content(
-                compassionate_prompt,
-                stream=True,
-        ):
-            full_response += response.text
-            if len(full_response) > 2000:
-                full_response = full_response[:2000] + "..."
-                break
-            message_placeholder.markdown(full_response + "▌")
+        # Use Ollama's API to generate a response
+        response = ollama.generate(model="qwen2.5:0.5b", prompt=compassionate_prompt)
+        full_response = response['response']
+
+        if len(full_response) > 2000:
+            full_response = full_response[:2000] + "..."
+
         message_placeholder.markdown(full_response)
 
     st.session_state.messages.append({"role": "assistant", "content": full_response})
