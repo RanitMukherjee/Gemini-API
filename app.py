@@ -6,6 +6,7 @@ from emotion_detection import detect_emotion
 from chatbot import initialize_chatbot, generate_response, extract_query_from_response, search_youtube
 from utils.voice_input import get_voice_input
 from utils.text_to_speech import speak
+import webbrowser
 
 # Load environment variables
 load_dotenv()
@@ -92,6 +93,11 @@ def handle_input(user_input):
 
         # Convert the assistant's response to speech
         speak(chatbot_message)  # Speak the assistant's response
+
+# Button to find nearby psychiatrists
+if st.button("Find Help"):
+    # Open the Google Maps link in a new tab
+    webbrowser.open_new_tab("https://www.google.com/maps/search/psychiatrists+near+me")
 
 # Voice input button
 if st.button("🎤 Use Voice Input"):
