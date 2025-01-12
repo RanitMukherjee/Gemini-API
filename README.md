@@ -45,7 +45,7 @@ Create a `.env` file in the root directory of the project and add the following 
 ```plaintext
 API_KEY=your_api_key_here
 
-### File Architecture
+### Environment Variables
 
 mental_health_chatbot/
 │
