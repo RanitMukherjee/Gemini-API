@@ -47,7 +47,7 @@ API_KEY=your_api_key_here
 ```
 
 ### File Architecture
-
+```plaintext
 mental_health_chatbot/
 │
 ├── app.py                  # Main Streamlit app
@@ -58,4 +58,4 @@ mental_health_chatbot/
 └── utils/                  # Utility functions
     ├── voice_input.py      # Voice input logic
     └── text_to_speech.py   # Text-to-speech logic
-
+```
