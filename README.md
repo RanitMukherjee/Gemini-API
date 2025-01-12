@@ -45,3 +45,16 @@ Create a `.env` file in the root directory of the project and add the following 
 ```plaintext
 API_KEY=your_api_key_here
 
+### File Architecture
+
+mental_health_chatbot/
+│
+├── app.py                  # Main Streamlit app
+├── emotion_detection.py    # Emotion detection logic
+├── chatbot.py              # Chatbot and LLM logic
+├── tools/                  # Directory for tools
+│   └── youtube_tool.py     # YouTube API tool
+└── utils/                  # Utility functions
+    ├── voice_input.py      # Voice input logic
+    └── text_to_speech.py   # Text-to-speech logic
+
